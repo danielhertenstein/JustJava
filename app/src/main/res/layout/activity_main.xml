@@ -114,31 +114,6 @@
             app:layout_constraintLeft_toRightOf="@+id/quantity_text_view"
             app:layout_constraintTop_toBottomOf="@+id/quantity_label" />
 
-        <TextView
-            android:id="@+id/order_summary_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Order Summary"
-            android:textAllCaps="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/decrement_button" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="$5.00"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_summary_label" />
-
         <Button
             android:id="@+id/order_button"
             android:layout_width="wrap_content"
@@ -149,7 +124,7 @@
             android:onClick="submitOrder"
             android:text="Order"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_summary_text_view" />
+            app:layout_constraintTop_toBottomOf="@+id/increment_button" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

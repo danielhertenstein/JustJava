@@ -1,9 +1,10 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void increment(View view) {
         if (quantity == 100) {
-            Toast.makeText(this, "Cannot order more than 100 coffees.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cannot order more than 100 coffees", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity += 1;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void decrement(View view) {
         if (quantity == 1) {
-            Toast.makeText(this, "Cannot order fewer than 1 coffee.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cannot order fewer than 1 coffee", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity -= 1;
@@ -55,11 +56,20 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         EditText nameField = (EditText) findViewById(R.id.name_field);
         String name = nameField.getText().toString();
+
         boolean hasWhippedCream = ((CheckBox) findViewById(R.id.whipped_cream_checkbox)).isChecked();
         boolean hasChocolate = ((CheckBox) findViewById(R.id.chocolate_checkbox)).isChecked();
         int price = calculatePrice(hasWhippedCream, hasChocolate);
+
         String summaryMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
-        displayMessage(summaryMessage);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, summaryMessage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
@@ -86,13 +96,4 @@ public class MainActivity extends AppCompatActivity {
         summary += "\nThank you!";
         return summary;
     }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
-
 }
