@@ -20,6 +20,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorAccent"
             android:hint="@string/name"
             android:inputType="textCapWords"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -28,13 +29,12 @@
 
         <TextView
             android:id="@+id/toppings_label"
-            android:layout_width="wrap_content"
+            style="@style/HeaderTextStyle"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/toppings"
-            android:textAllCaps="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_field" />
 
@@ -66,13 +66,12 @@
 
         <TextView
             android:id="@+id/quantity_label"
-            android:layout_width="wrap_content"
+            style="@style/HeaderTextStyle"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/quantity"
-            android:textAllCaps="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chocolate_checkbox" />
 
