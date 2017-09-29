@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject, name));
         intent.putExtra(Intent.EXTRA_TEXT, summaryMessage);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -88,12 +88,17 @@ public class MainActivity extends AppCompatActivity {
      * Creates the summary of the order based on quantity and price.
      */
     private String createOrderSummary(int priceOfOrder, boolean addWhippedCream, boolean addChocolate, String name) {
-        String summary = "Name: " + name;
-        summary += "\nAdd whipped cream? " + addWhippedCream;
-        summary += "\nAdd chocolate? " + addChocolate;
-        summary += "\nQuantity: " + quantity;
+        String summary = getString(R.string.summary_name, name);
+        summary += "\n" + getString(R.string.summary_whipped_cream, translateBoolean(addWhippedCream));
+        summary += "\n" + getString(R.string.summary_chocolate, translateBoolean(addChocolate));
+        summary += "\n" + getString(R.string.summary_quantity, quantity);
         summary += "\n" + getString(R.string.summary_total, priceOfOrder);
         summary += "\n" + getString(R.string.thank_you);
         return summary;
+    }
+
+    private String translateBoolean(boolean bool) {
+        if (bool) { return getString(R.string.bool_true); }
+        else { return getString(R.string.bool_false); }
     }
 }
