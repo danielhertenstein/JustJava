@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="chocolate">Chocolat</string>
+    <string name="decrement">-</string>
+    <string name="increment">+</string>
+    <string name="name">Prénom</string>
+    <string name="one_numeral">1</string>
+    <string name="order">Ordre</string>
+    <string name="quantity">Quantité</string>
+    <string name="thank_you">Merci!</string>
+    <string name="too_few_coffees">Ne peut pas commander moins de 1 café</string>
+    <string name="too_many_coffees">Ne peut pas commander plus de 100 cafés</string>
+    <string name="toppings">Garnitures</string>
+    <string name="whipped_cream">Crème Fouettée</string>
+</resources>

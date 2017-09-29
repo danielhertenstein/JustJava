@@ -20,7 +20,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="textCapWords"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -33,7 +33,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:textAllCaps="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_field" />
@@ -46,7 +46,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:paddingLeft="24dp"
-            android:text="Whipped Cream"
+            android:text="@string/whipped_cream"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toppings_label" />
@@ -59,7 +59,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:paddingLeft="24dp"
-            android:text="Chocolate"
+            android:text="@string/chocolate"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/whipped_cream_checkbox" />
@@ -71,7 +71,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Quantity"
+            android:text="@string/quantity"
             android:textAllCaps="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chocolate_checkbox" />
@@ -84,7 +84,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:onClick="decrement"
-            android:text="-"
+            android:text="@string/decrement"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quantity_label" />
 
@@ -96,7 +96,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:text="1"
+            android:text="@string/one_numeral"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/decrement_button"
@@ -110,7 +110,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:onClick="increment"
-            android:text="+"
+            android:text="@string/increment"
             app:layout_constraintLeft_toRightOf="@+id/quantity_text_view"
             app:layout_constraintTop_toBottomOf="@+id/quantity_label" />
 
@@ -122,7 +122,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:onClick="submitOrder"
-            android:text="Order"
+            android:text="@string/order"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/increment_button" />
 

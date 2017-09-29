@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText(String.valueOf(number));
     }
 
     public void increment(View view) {
         if (quantity == 100) {
-            Toast.makeText(this, "Cannot order more than 100 coffees", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.too_many_coffees, Toast.LENGTH_SHORT).show();
             return;
         }
         quantity += 1;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void decrement(View view) {
         if (quantity == 1) {
-            Toast.makeText(this, "Cannot order fewer than 1 coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.too_few_coffees, Toast.LENGTH_SHORT).show();
             return;
         }
         quantity -= 1;
@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         summary += "\nAdd whipped cream? " + addWhippedCream;
         summary += "\nAdd chocolate? " + addChocolate;
         summary += "\nQuantity: " + quantity;
-        summary += "\nTotal: $" + priceOfOrder;
-        summary += "\nThank you!";
+        summary += "\n" + getString(R.string.summary_total, priceOfOrder);
+        summary += "\n" + getString(R.string.thank_you);
         return summary;
     }
 }
