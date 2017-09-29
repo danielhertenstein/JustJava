@@ -3,16 +3,19 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
+    int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
+        if (quantity == 100) {
+            Toast.makeText(this, "Cannot order more than 100 coffees.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity += 1;
         displayQuantity(quantity);
     }
 
     public void decrement(View view) {
+        if (quantity == 1) {
+            Toast.makeText(this, "Cannot order fewer than 1 coffee.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity -= 1;
         displayQuantity(quantity);
     }
@@ -42,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        String name = nameField.getText().toString();
         boolean hasWhippedCream = ((CheckBox) findViewById(R.id.whipped_cream_checkbox)).isChecked();
-        int price = calculatePrice();
-        String summaryMessage = createOrderSummary(price, hasWhippedCream);
+        boolean hasChocolate = ((CheckBox) findViewById(R.id.chocolate_checkbox)).isChecked();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
+        String summaryMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
         displayMessage(summaryMessage);
     }
 
@@ -53,19 +67,20 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return total price
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        int price = 5;
+        if (addWhippedCream) { price += 1; }
+        if (addChocolate) { price += 2; }
+        return quantity * price;
     }
 
     /**
      * Creates the summary of the order based on quantity and price.
-     *
-     * @param priceOfOrder the total price of the order
-     * @return String of order summary
      */
-    private String createOrderSummary(int priceOfOrder, boolean hasWhippedCream) {
-        String summary = "Name: Fake Name";
-        summary += "\nAdd whipped cream? " + hasWhippedCream;
+    private String createOrderSummary(int priceOfOrder, boolean addWhippedCream, boolean addChocolate, String name) {
+        String summary = "Name: " + name;
+        summary += "\nAdd whipped cream? " + addWhippedCream;
+        summary += "\nAdd chocolate? " + addChocolate;
         summary += "\nQuantity: " + quantity;
         summary += "\nTotal: $" + priceOfOrder;
         summary += "\nThank you!";
