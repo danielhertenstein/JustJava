@@ -16,7 +16,7 @@
     <string name="bool_true">Vrai</string>
     <string name="bool_false">Faux</string>
     <string name="summary_total">
-        Total: €<xliff:g id="money" example="5">%d</xliff:g>
+        Total: <xliff:g id="money" example="€5">%s</xliff:g>
     </string>
     <string name="summary_quantity">
         Quantité: <xliff:g id="quantity" example="3">%d</xliff:g>
